@@ -2,14 +2,14 @@ resources:
   - name: myGitRepo
     type: GitRepo
     configuration:
-      gitProvider: my_github
-      path: jfrog/jfrog-pipelines-simple-example
+      gitProvider: gh1
+      path: oferhaze/jfrog-pipelines-simple-example
       branches:
         include: master
   - name: myBuildInfo
     type: BuildInfo
     configuration:
-      sourceArtifactory: art
+      sourceArtifactory: gh1
       buildName: SampleApp
       buildNumber: 1          
 pipelines:  
@@ -74,7 +74,7 @@ pipelines:
             - name: step_3
             - name: step_4  
           integrations:
-            - name: my_github            
+            - name: gh1            
         execution:
           onExecute:
             - 'curl -H "Authorization: token ${int_my_github_token}" ${int_my_github_url}/rate_limit'
