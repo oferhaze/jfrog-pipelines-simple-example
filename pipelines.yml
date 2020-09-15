@@ -6,12 +6,7 @@ resources:
       path: oferhaze/jfrog-pipelines-simple-example
       branches:
         include: master
-  - name: myBuildInfo
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: gh1
-      buildName: SampleApp
-      buildNumber: 1          
+    
 pipelines:  
   - name: basic_pipeline
     configuration:
@@ -35,8 +30,7 @@ pipelines:
       - name: step_2
         type: Bash
         configuration:
-          inputResources:
-            - name: myBuildInfo            
+             
           runtime:
             type: image
             image:
@@ -46,7 +40,7 @@ pipelines:
         execution:
           onExecute:
             - echo $run_var  
-            - echo $res_myBuildInfo_buildNumber
+
 
       - name: step_3
         type: Bash
